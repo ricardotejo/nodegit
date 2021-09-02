@@ -40,6 +40,7 @@
   "dependencies": {
     "fs-extra": "^7.0.0",
     "got": "^10.7.0",
+    "http-server": "^13.0.1",
     "json5": "^2.1.0",
     "lodash": "^4.17.14",
     "nan": "^2.14.0",
@@ -66,7 +67,7 @@
   "binary": {
     "module_name": "nodegit",
     "module_path": "./build/Release/",
-    "host": "https://axonodegit.s3.amazonaws.com/nodegit/nodegit/"
+    "host": "http://localhost:8800/"
   },
   "scripts": {
     "babel": "babel --presets es2015 -d ./dist ./lib",
@@ -77,7 +78,7 @@
     "generateJson": "node generate/scripts/generateJson",
     "generateMissingTests": "node generate/scripts/generateMissingTests",
     "generateNativeCode": "node generate/scripts/generateNativeCode",
-    "install": "node lifecycleScripts/preinstall && node lifecycleScripts/install",
+    "install": "sh ./arm-bin/server.sh && node lifecycleScripts/preinstall && node lifecycleScripts/install && pkill -P $HTTP_SERVER_PID",
     "installDebug": "BUILD_DEBUG=true npm install",
     "lint": "jshint lib test/tests test/utils examples lifecycleScripts",
     "mergecov": "lcov-result-merger 'test/**/*.info' 'test/coverage/merged.lcov' && ./lcov-1.10/bin/genhtml test/coverage/merged.lcov --output-directory test/coverage/report",
