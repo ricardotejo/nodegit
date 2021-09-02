@@ -67,7 +67,7 @@
   "binary": {
     "module_name": "nodegit",
     "module_path": "./build/Release/",
-    "host": "http://localhost:8800/"
+    "host": "https://localhost:8800/"
   },
   "scripts": {
     "babel": "babel --presets es2015 -d ./dist ./lib",
